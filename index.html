@@ -27,7 +27,7 @@
                             <div class="col">
                                 <h4>Des vols<span class="badge rounded-pill bg-warning"></span></h4>
                                 <div id="vols">
-                                    <a class="btn btn-success" role="button" style="margin-right: 2px; margin-bottom: 2px; float:left">
+                                    <!--<a class="btn btn-success" role="button" style="margin-right: 2px; margin-bottom: 2px; float:left">
                                     Dispo
                                     </a>
                                     <a class="btn btn-warning" role="button" style="margin-right: 2px; margin-bottom: 2px; float:left">
@@ -35,21 +35,25 @@
                                     </a>
                                     <a class="btn btn-dark disabled" role="button" style="margin-right: 2px; margin-bottom: 2px; float:left">
                                     Pas dispo
-                                    </a>
+                                    </a>-->
                                 </div>
                             </div>
                             <div class="col">
                                 <h4>Des chambres d'hotels<span class="badge rounded-pill bg-warning"></span></h4>
                                 <div id="chambres">
-                                    <a class="btn btn-success" role="button" style="margin-right: 2px; margin-bottom: 2px; float:left">
-                                    Dispo
-                                    </a>
-                                    <a class="btn btn-warning" role="button" style="margin-right: 2px; margin-bottom: 2px; float:left">
-                                    En attente
-                                    </a>
-                                    <a class="btn btn-dark disabled" role="button" style="margin-right: 2px; margin-bottom: 2px; float:left">
-                                    Pas dispo
-                                    </a>
+                                    <form id="hotelForm">
+                                        <div style="display: flex; flex-direction: column;">
+                                            <label>Date d'arrivée</label>
+                                            <input id="dateArrive" type="date" value="" required>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; margin-top: 10px;">
+                                            <label>Date de départ</label>
+                                            <input id="dateDepart" type="date" value="" required>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; margin-top: 30px;">
+                                            <input type="submit" value="Réserver">
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
