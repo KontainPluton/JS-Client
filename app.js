@@ -7,12 +7,12 @@ let dateDepart = document.getElementById('dateDepart')
 let idSelectedRoom = null
 let maxRoom = null
 let onClickFirst = []
-
+const serverName = "java_restserver_war_exploded"
 
 let headers = new Headers()
 headers.append('Content-Type', 'application/json')
 headers.append('Accept', 'application/json')
-headers.append('Access-Control-Allow-Origin', 'http://localhost:8090')
+headers.append('Access-Control-Allow-Origin', '*')
 headers.append('Access-Control-Allow-Credentials', 'true')
 headers.append('GET', 'POST', 'OPTIONS')
 
@@ -32,8 +32,8 @@ function initKeycloak() {
 }
 
 function init() {
-    initPlaces("http://localhost:8090/java-restserver/api/compagnies/1/vols/17/places")
-    initChambres("http://localhost:8090/java-restserver/api/rooms")
+    initPlaces("http://localhost:8090/" + serverName + "/api/compagnies/1/vols/17/places")
+    initChambres("http://localhost:8090/" + serverName + "/api/rooms")
     initForm()
 }
 
@@ -55,7 +55,7 @@ function initForm() {
             alert("Veuillez sélectionner une chambre")
         }
         else {
-        let url = "http://localhost:8090/java-restserver/api/rooms/" + idSelectedRoom 
+        let url = "http://localhost:8090/" + serverName + "/api/rooms/" + idSelectedRoom 
         fetch(url, {
             method: 'POST',
             headers: headers,
