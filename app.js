@@ -22,7 +22,6 @@ function init() {
 }
 
 function initForm() {
-    console.log('init form')
     dateDepart.setAttribute('disabled', 'disabled')
     dateArrive.addEventListener('change', function() {
         if(dateArrive.value != "") {
@@ -51,8 +50,6 @@ function initForm() {
                 location.reload()
             })
         })
-        console.log(dateArrive.value)
-        console.log(dateDepart.value)
         }
     })
 }
@@ -70,13 +67,14 @@ function initPlaces(url) {
                 button.setAttribute('role', 'button')
                 if(element.available) {
                     button.addEventListener('click', function(event) {
-                        fetch(url + element.numero_place, {
+                        fetch(url + "/" + element.numero_place, {
                             method: 'POST',
                             headers: headers
                         })
                         .then(function(response) {
                             response.json().then(function(response) {
-                                //todo gérer la réponse
+                                response ? alert('Réservation réussis') : alert('Impossible de réserver cette place')
+                                location.reload()
                             })
                         })
                         .catch(err => console.error(err))
