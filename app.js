@@ -5,6 +5,9 @@ let submitHotelForm = document.getElementById('hotelForm')
 let dateArrive = document.getElementById('dateArrive')
 let dateDepart = document.getElementById('dateDepart')
 let idSelectedRoom = null
+let maxRoom = null
+let onClickFirst = []
+
 
 let headers = new Headers()
 headers.append('Content-Type', 'application/json')
@@ -100,21 +103,43 @@ function initChambres(url) {
                 button.className = 'btn btn-success'
                 button.id = i
                 button.setAttribute('role', 'button')
-                button.addEventListener('click', function(event) {
-                    button.className = 'btn btn-warning'
-                    idSelectedRoom = element.room_number
-                    for(j = 1; j < i; j++) {
-                        if(j != idSelectedRoom) {
-                            btn = document.getElementById(j)
-                            btn.className = 'btn btn-dark disabled'
-                            btn.addEventListener('click', null)
-                        }
-                    }
-                })
+                onClickFirst[i] = listenerFirstClick.bind(null, element.room_number)
+                button.addEventListener('click', onClickFirst[i])
                 chambres.appendChild(button)
                 i++
             })
+            maxRoom = i
         })
     })
     .catch(err => console.error(err))
+}
+
+function listenerFirstClick(index) {
+    idSelectedRoom = index
+    for(j = 1; j < maxRoom; j++) {
+        btn = document.getElementById(j)
+        btn.removeEventListener('click', onClickFirst[j])
+        if(j != idSelectedRoom) {
+            btn.className = 'btn btn-dark disabled'
+        }
+        else {
+            console.log(btn)
+            btn.className = 'btn btn-warning'
+            btn.addEventListener('click', listenerSecondClick)
+        }
+    }
+}
+
+function listenerSecondClick() {
+    for(j = 1; j < maxRoom; j++) {
+        btn = document.getElementById(j)
+        if(j == idSelectedRoom) {
+            console.log(btn)
+            btn.removeEventListener('click', listenerSecondClick)
+        }
+        btn.className = 'btn btn-success'
+        onClickFirst[j] = listenerFirstClick.bind(null, j)
+        btn.addEventListener('click', onClickFirst[j])
+    }
+    idSelectedRoom = null
 }
