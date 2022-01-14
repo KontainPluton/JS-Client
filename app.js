@@ -8,7 +8,7 @@ let dateDepart = document.getElementById('dateDepart')
 init()
 
 function init() {
-    getJSON("http://localhost:8080/java_restserver_war_exploded/api/compagnies/1/vols/17/places")
+    getJSON("http://localhost:8090/java_restserver_war_exploded/api/compagnies/1/vols/17/places")
     initForm()
 }
 
@@ -37,7 +37,7 @@ function getJSON(url) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json')
     headers.append('Accept', 'application/json')
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:8080')
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:8090')
     headers.append('Access-Control-Allow-Credentials', 'true')
     headers.append('GET', 'POST', 'OPTIONS')
 
