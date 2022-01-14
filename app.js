@@ -123,7 +123,6 @@ function listenerFirstClick(index) {
             btn.className = 'btn btn-dark disabled'
         }
         else {
-            console.log(btn)
             btn.className = 'btn btn-warning'
             btn.addEventListener('click', listenerSecondClick)
         }
@@ -134,7 +133,6 @@ function listenerSecondClick() {
     for(j = 1; j < maxRoom; j++) {
         btn = document.getElementById(j)
         if(j == idSelectedRoom) {
-            console.log(btn)
             btn.removeEventListener('click', listenerSecondClick)
         }
         btn.className = 'btn btn-success'
