@@ -13,11 +13,24 @@ headers.append('Access-Control-Allow-Origin', 'http://localhost:8090')
 headers.append('Access-Control-Allow-Credentials', 'true')
 headers.append('GET', 'POST', 'OPTIONS')
 
-init()
+function initKeycloak() {
+    var keycloak = new Keycloak();
+    keycloak.init({
+        onLoad:'login-required'
+    }).then(function(authenticated) {
+        alert(authenticated ? 'authenticated' : 'not authenticated');
+        headers.append('Authorization', 'Bearer ' + keycloak.token)
+        console.log(keycloak.token)
+        init()
+    }).catch(function(err) {
+        console.log(err)
+        alert('failed to initialize');
+    });
+}
 
 function init() {
-    initPlaces("http://localhost:8090/java_restserver_war_exploded/api/compagnies/1/vols/17/places")
-    initChambres("http://localhost:8090/java_restserver_war_exploded/api/rooms")
+    initPlaces("http://localhost:8090/java-restserver/api/compagnies/1/vols/17/places")
+    initChambres("http://localhost:8090/java-restserver/api/rooms")
     initForm()
 }
 
@@ -39,7 +52,7 @@ function initForm() {
             alert("Veuillez sélectionner une chambre")
         }
         else {
-        let url = "http://localhost:8090/java_restserver_war_exploded/api/rooms/" + idSelectedRoom 
+        let url = "http://localhost:8090/java-restserver/api/rooms/" + idSelectedRoom 
         fetch(url, {
             method: 'POST',
             headers: headers,
