@@ -27,7 +27,7 @@ function initForm() {
 
     submitHotelForm.addEventListener('submit', function(event) {
         event.preventDefault()
-        
+        //TODO demande au serveur rest qui va lui même demande à gcpd
         console.log(dateArrive.value)
         console.log(dateDepart.value)
     })
@@ -52,6 +52,11 @@ function getJSON(url) {
                 button.innerHTML = element.numero_place
                 button.className = element.available ? 'btn btn-success' : 'btn btn-dark disabled'
                 button.setAttribute('role', 'button')
+                if(element.available) {
+                    button.addEventListener('click', function(event) {
+                        //TODO réservation place de vol
+                    })
+                }
                 baliseVols.appendChild(button)
             });
         } 
