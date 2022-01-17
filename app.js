@@ -7,7 +7,7 @@ let dateDepart = document.getElementById('dateDepart')
 let idSelectedRoom = null
 let maxRoom = null
 let onClickFirst = []
-const serverName = "java_restserver_war"
+const serverName = "java-restserver"
 
 let headers = new Headers()
 headers.append('Content-Type', 'application/json')
