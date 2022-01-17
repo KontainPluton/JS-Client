@@ -15,40 +15,61 @@
 </head>
 
 <body onload="initKeycloak()">
+    <div class="row">
+        <div class="col" style="background: #000000;">
+            <nav class="navbar navbar-light navbar-expand-md" style="background: #000000;">
+                <div class="container-fluid">
+                    <a class="btn btn-link" role="button" id="menu-toggle">
+                        <i class="fa fa-bars" style="color: rgb(255,157,101);border-color: rgb(255,129,56);"></i>
+                    </a>
+                    <a class="navbar-brand" href="/" style="color: rgba(255,255,255,0.9);">
+                        <strong>Bookme : le site que vous méritez</strong>
+                    </a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navcol-1"></div>
+                </div>
+            </nav>
+        </div>
+    </div>
     <div id="wrapper">
         <div class="page-content-wrapper">
             <div class="container-fluid">
-                        <div>
-                            <h1 style="text-align:center; background-color: yellowgreen; border-radius: 50% 20% / 10% 40%;; margin-top: 5px;">Réservation de vols et de chambres d'hotels</h1>
-                        </div>
-                        <div class="row" style="margin-top: 20px;">
-                            <div class="col">
-                                <h4>Des vols<span class="badge rounded-pill bg-warning"></span></h4>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 style="text-align: center;">Des vols<span class="badge rounded-pill bg-warning"></span></h4>
                                 <div id="vols">
                                 </div>
                             </div>
-                            <div class="col">
-                                <h4>Des chambres d'hotels<span class="badge rounded-pill bg-warning"></span></h4>
-                                <div>
-                                    <div id="chambres">
-
-                                    </div>
-                                    <form id="hotelForm">
-                                        <div style="display: flex; flex-direction: column;">
-                                            <label>Date d'arrivée</label>
-                                            <input id="dateArrive" type="date" value="" required>
-                                        </div>
-                                        <div style="display: flex; flex-direction: column; margin-top: 10px;">
-                                            <label>Date de départ</label>
-                                            <input id="dateDepart" type="date" value="" required>
-                                        </div>
-                                        <div style="display: flex; flex-direction: column; margin-top: 30px;">
-                                            <input type="submit" value="Réserver">
-                                        </div>
-                                    </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 style="text-align: center;">Des chambres d'hotels<span class="badge rounded-pill bg-warning"></span></h4>
+                                <div id="chambres">
                                 </div>
+                                <form id="hotelForm">
+                                    <div style="display: flex; flex-direction: column;">
+                                        <label>Date d'arrivée</label>
+                                        <input id="dateArrive" type="date" value="" required>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; margin-top: 10px;">
+                                        <label>Date de départ</label>
+                                        <input id="dateDepart" type="date" value="" required>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; margin-top: 30px;">
+                                        <input type="submit" value="Réserver">
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
