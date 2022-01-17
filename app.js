@@ -32,7 +32,7 @@ function initKeycloak() {
 }
 
 function init() {
-    initPlaces("http://localhost:8090/" + serverName + "/api/compagnies/1/vols/17/places")
+    initPlaces("http://localhost:8090/" + serverName + "/api/compagnies/company_1/vols/17/places")
     initChambres("http://localhost:8090/" + serverName + "/api/rooms")
     initForm()
 }
