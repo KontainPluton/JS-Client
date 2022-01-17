@@ -21,23 +21,26 @@ function initKeycloak() {
     keycloak.init({
         onLoad:'login-required'
     }).then(function(authenticated) {
-        alert(authenticated ? 'authenticated' : 'not authenticated');
         headers.append('Authorization', 'Bearer ' + keycloak.token)
-        console.log(keycloak.token)
-        init()
+        initSecurised()
     }).catch(function(err) {
-        console.log(err)
-        alert('failed to initialize');
+        initNotSecurised()
     });
 }
 
-function init() {
-    initPlaces("http://localhost:8090/" + serverName + "/api/compagnies/company_1/vols/17/places")
-    initChambres("http://localhost:8090/" + serverName + "/api/rooms")
-    initForm()
+function initSecurised() {
+    initPlaces("http://localhost:8090/" + serverName + "/api/securised/compagnies/company_1/vols/17/places")
+    initChambres("http://localhost:8090/" + serverName + "/api/securised/rooms")
+    initForm("securised")
 }
 
-function initForm() {
+function initNotSecurised() {
+    initPlaces("http://localhost:8090/" + serverName + "/api/notsecurised/compagnies/company_1/vols/17/places")
+    initChambres("http://localhost:8090/" + serverName + "/api/securised/rooms")
+    initForm("notsecurised")
+}
+
+function initForm(isSecurised) {
     dateDepart.setAttribute('disabled', 'disabled')
     dateArrive.addEventListener('change', function() {
         if(dateArrive.value != "") {
@@ -55,7 +58,7 @@ function initForm() {
             alert("Veuillez sélectionner une chambre")
         }
         else {
-        let url = "http://localhost:8090/" + serverName + "/api/rooms/" + idSelectedRoom 
+        let url = "http://localhost:8090/" + serverName + "/api/" + isSecurised + "rooms/" + idSelectedRoom 
         fetch(url, {
             method: 'POST',
             headers: headers,
