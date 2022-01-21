@@ -1,6 +1,6 @@
 {
   "realm": "BookMe",
-  "auth-server-url": "http://localhost:8080/auth/",
+  "auth-server-url": "http://host.docker.internal:8080/auth/",
   "ssl-required": "external",
   "resource": "js-client",
   "public-client": true,

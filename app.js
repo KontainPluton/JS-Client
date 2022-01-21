@@ -36,7 +36,7 @@ function initSecurised() {
 
 function initNotSecurised() {
     initPlaces("http://localhost:8090/" + serverName + "/api/notsecurised/compagnies/company_1/vols/17/places")
-    initChambres("http://localhost:8090/" + serverName + "/api/securised/rooms")
+    initChambres("http://localhost:8090/" + serverName + "/api/notsecurised/rooms")
     initForm("notsecurised")
 }
 
