@@ -8,3 +8,9 @@
 ![GitHub last commit](https://shield.lylium.fr:/github/last-commit/KontainPluton/JS-Client?style=for-the-badge)
 
 *[Test project for a course at IMT]*
+
+---
+
+This project is a JS-Client to request a REST service, whose code is available here : https://github.com/KontainPluton/REST-Service
+
+⚠️ *(The JS client is useless without the REST part. All the installation procedure is available in the README, available in the rest service repository)* ⚠️
