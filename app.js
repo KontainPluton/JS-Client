@@ -7,6 +7,7 @@ let dateDepart = document.getElementById('dateDepart')
 let idSelectedRoom = null
 let maxRoom = null
 let onClickFirst = []
+const serverIP = "host.docker.internal"
 const serverName = "java-restserver"
 
 let headers = new Headers()
@@ -29,14 +30,14 @@ function initKeycloak() {
 }
 
 function initSecurised() {
-    initPlaces("http://localhost:8090/" + serverName + "/api/securised/compagnies/company_1/vols/17/places")
-    initChambres("http://localhost:8090/" + serverName + "/api/securised/rooms")
+    initPlaces("http://"+serverIP+":8090/" + serverName + "/api/securised/compagnies/company_1/vols/17/places")
+    initChambres("http://"+serverIP+":8090/" + serverName + "/api/securised/rooms")
     initForm("securised")
 }
 
 function initNotSecurised() {
-    initPlaces("http://localhost:8090/" + serverName + "/api/notsecurised/compagnies/company_1/vols/17/places")
-    initChambres("http://localhost:8090/" + serverName + "/api/notsecurised/rooms")
+    initPlaces("http://"+serverIP+":8090/" + serverName + "/api/notsecurised/compagnies/company_1/vols/17/places")
+    initChambres("http://"+serverIP+":8090/" + serverName + "/api/notsecurised/rooms")
     initForm("notsecurised")
 }
 
@@ -58,7 +59,7 @@ function initForm(isSecurised) {
             alert("Veuillez sélectionner une chambre")
         }
         else {
-        let url = "http://localhost:8090/" + serverName + "/api/" + isSecurised + "/" + "rooms/" + idSelectedRoom
+        let url = "http://"+serverIP+":8090/" + serverName + "/api/" + isSecurised + "/" + "rooms/" + idSelectedRoom
         fetch(url, {
             method: 'POST',
             headers: headers,
